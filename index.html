@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>XV Años – Ximena</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ============================  SOBRE  ============================ -->
+  <div id="envelope-screen">
+    <div class="env-scene">
+      <p class="env-top-text">Tienes un mensaje especial</p>
+
+      <div class="envelope-wrap" id="envelopeWrap">
+        <div class="envelope" id="envelope">
+          <!-- Solapa trasera -->
+          <div class="env-back-flap"></div>
+          <!-- Cuerpo del sobre -->
+          <div class="env-body">
+            <!-- Carta que sube -->
+            <div class="env-letter" id="envLetter">
+              <div class="letter-content">
+                <p class="lc-pre">Una invitación muy especial para</p>
+                <p class="lc-name">Ximena</p>
+                <p class="lc-xv">XV Años</p>
+                <div class="lc-ornament">✦</div>
+                <p class="lc-date">14 · Marzo · 2026</p>
+              </div>
+            </div>
+            <!-- Solapa delantera (tapa) -->
+            <div class="env-front-flap" id="envFlap">
+              <div class="flap-diamond"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sello de cera -->
+        <div class="wax-seal" id="waxSeal">
+          <span>XV</span>
+        </div>
+      </div>
+
+      <p class="env-hint" id="envHint">✦ Toca para abrir ✦</p>
+    </div>
+  </div>
+
+  <!-- ============================  INVITACIÓN  ============================ -->
+  <div id="invitation" class="hidden">
+
+    <div class="petal" style="--d:3s;--x:10%;--s:14px"></div>
+    <div class="petal" style="--d:5s;--x:33%;--s:10px"></div>
+    <div class="petal" style="--d:4s;--x:68%;--s:17px"></div>
+    <div class="petal" style="--d:6s;--x:84%;--s:12px"></div>
+    <div class="petal" style="--d:3.5s;--x:52%;--s:15px"></div>
+
+    <!-- PORTADA -->
+    <section class="section cover">
+      <div class="floral-top"></div>
+      <div class="cover-inner reveal">
+        <p class="pre-title">Te invita a celebrar</p>
+        <h1 class="mis-anos">Mis <span>XV</span> Años</h1>
+        <div class="crown">✦</div>
+        <h2 class="nombre">Ximena</h2>
+        <div class="foto-portada">
+          <div class="foto-frame">
+            <div class="foto-placeholder"><span class="ph-icon">◈</span><small>Tu foto aquí</small></div>
+          </div>
+        </div>
+        <blockquote class="frase">
+          "Hay momentos inolvidables que se atesoran con el corazón para siempre. Por esa razón, con la alegría y emoción, quiero compartir contigo esta noche maravillosa celebrando juntos mis XV años."
+        </blockquote>
+        <div class="music-player">
+          <p class="music-label">♪ Dale Play</p>
+          <audio id="audio" loop></audio>
+          <div class="controls"><button class="ctrl-btn" onclick="togglePlay()">▶</button></div>
+          <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+        </div>
+      </div>
+      <div class="floral-bottom"></div>
+    </section>
+
+    <!-- PADRES Y FECHA -->
+    <section class="section parents">
+      <div class="floral-divider"></div>
+      <div class="reveal">
+        <p class="section-label">Acompáñame en este día tan especial junto a</p>
+        <h3 class="subtitle-script">Mis Padres</h3>
+        <p class="names-couple">Rafael López &amp; Emilia Peredo</p>
+        <h3 class="subtitle-script" style="margin-top:1.5rem">Mis Padrinos</h3>
+        <p class="names-couple">Freddy Pérez &amp; Mónica Bernal</p>
+
+        <div class="date-box">
+          <p class="a-festejar">A festejar mis</p>
+          <p class="xv-grande">XV AÑOS</p>
+          <div class="fecha-elegante">
+            <span class="mes-script">Marzo</span>
+            <span class="dia-num">14</span>
+            <span class="anio">2026</span>
+          </div>
+          <p class="dia-semana">Sábado</p>
+        </div>
+
+        <div class="countdown-box">
+          <p class="faltan-label">Faltan</p>
+          <div class="countdown" id="countdown">
+            <div class="cd-unit"><span id="cd-days">00</span><small>Días</small></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span id="cd-hours">00</span><small>Horas</small></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span id="cd-mins">00</span><small>Minutos</small></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span id="cd-secs">00</span><small>Segundos</small></div>
+          </div>
+          <p class="gran-dia hidden" id="granDia">¡Hoy es el gran día! ✦</p>
+        </div>
+
+        <div class="calendar-mini">
+          <p class="cal-mes">Marzo</p>
+          <table class="cal-table">
+            <thead><tr><th>L</th><th>M</th><th>Mi</th><th>J</th><th>V</th><th>S</th><th>D</th></tr></thead>
+            <tbody id="cal-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="floral-divider"></div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section class="section events">
+      <div class="reveal">
+        <div class="event-card">
+          <div class="event-icon">⛪</div>
+          <h3 class="script-heading">Misa de Agradecimiento</h3>
+          <p class="event-time">6:00 PM</p>
+          <p class="event-place">Iglesia Sagrado Corazón</p>
+          <p class="event-address">El Nevado Manzana 009, Toluca de Lerdo.</p>
+          <a class="btn-location" href="https://maps.google.com/?q=Iglesia+Sagrado+Corazon+Toluca+de+Lerdo" target="_blank">◈ Ver Ubicación</a>
+          <div class="map-embed">
+            <iframe title="Mapa Iglesia" loading="lazy"
+              src="https://www.google.com/maps?q=Iglesia+Sagrado+Corazon,+Toluca+de+Lerdo,+Mexico&output=embed"
+              width="100%" height="190" style="border:0;border-radius:12px;display:block;"></iframe>
+          </div>
+        </div>
+
+        <div class="foto-evento reveal">
+          <div class="foto-placeholder tall"><span class="ph-icon">◈</span><small>Foto especial</small></div>
+        </div>
+
+        <div class="event-card reveal">
+          <div class="event-icon">✦</div>
+          <h3 class="script-heading">Recepción</h3>
+          <p class="event-time">7:00 PM</p>
+          <p class="event-place">Salón de Fiestas Quinta La Bonita</p>
+          <p class="event-address">De Los Jinetes Manzana, Toluca.</p>
+          <a class="btn-location" href="https://maps.google.com/?q=Quinta+La+Bonita+Toluca+Mexico" target="_blank">◈ Ver Ubicación</a>
+          <div class="map-embed">
+            <iframe title="Mapa Recepción" loading="lazy"
+              src="https://www.google.com/maps?q=Quinta+La+Bonita,+Toluca,+Mexico&output=embed"
+              width="100%" height="190" style="border:0;border-radius:12px;display:block;"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITINERARIO -->
+    <section class="section itinerary">
+      <div class="floral-divider"></div>
+      <div class="reveal">
+        <h3 class="script-heading big">Itinerario de actividades</h3>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot">⊙</div><div class="tl-content"><span class="tl-time">5:30 PM</span><span class="tl-event">Llegada</span></div></div>
+          <div class="tl-item"><div class="tl-dot">◈</div><div class="tl-content"><span class="tl-time">6:30 PM</span><span class="tl-event">Vals</span></div></div>
+          <div class="tl-item"><div class="tl-dot">⊕</div><div class="tl-content"><span class="tl-time">8:00 PM</span><span class="tl-event">Sesión de Fotos</span></div></div>
+          <div class="tl-item"><div class="tl-dot">✦</div><div class="tl-content"><span class="tl-time">10:30 PM</span><span class="tl-event">Fiesta</span></div></div>
+          <div class="tl-item"><div class="tl-dot">◇</div><div class="tl-content"><span class="tl-time">2:00 AM</span><span class="tl-event">Despedida</span></div></div>
+        </div>
+        <div class="vestimenta reveal">
+          <h3 class="script-heading big">Código de vestimenta</h3>
+          <p class="vest-tipo">ETIQUETA</p>
+          <div class="vest-icons">◈ ◇</div>
+          <p class="vest-nota">Con mucho cariño, les pedimos evitar el tono verde cemento, ya que está reservado especialmente para la quinceañera.</p>
+        </div>
+      </div>
+      <div class="floral-divider"></div>
+    </section>
+
+    <!-- REGALOS + CONFIRMAR -->
+    <section class="section gifts">
+      <div class="reveal">
+        <div class="gift-box">
+          <div class="event-icon">◈</div>
+          <h3 class="script-heading">Sugerencia de regalos</h3>
+          <p class="gift-text">Ahora mis sueños se materializan lejos de mi querida ciudad blanca. Si deseas apoyarme puedes hacerlo con una transferencia. ¡Gracias por cada detalle!</p>
+          <div class="bank-info">
+            <div class="bank-icon">⊕</div>
+            <p><strong>Banco ABC</strong></p>
+            <p>Cuenta de Ahorro · Nombre y Apellido</p>
+            <p class="cuenta">1111-2222-3333-4444</p>
+          </div>
+        </div>
+        <div class="confirm-box reveal">
+          <div class="event-icon">◇</div>
+          <h3 class="script-heading">Confirmar asistencia</h3>
+          <p>Por favor confirma tu asistencia<br/>antes del <strong>12 de Febrero</strong></p>
+          <a class="btn-confirm" href="https://wa.me/521234567890" target="_blank">✦ Confirmar Aquí</a>
+          <p class="confirm-note">Con mucho cariño, esta celebración es para que adolescentes y adultos puedan compartir y disfrutar juntos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="section closing">
+      <div class="floral-top"></div>
+      <div class="reveal closing-inner">
+        <h2 class="te-esperamos">¡Te esperamos!</h2>
+        <div class="foto-cierre">
+          <div class="foto-placeholder tall"><span class="ph-icon">✦</span><small>Foto final</small></div>
+        </div>
+        <p class="tu-presencia">Tu presencia y alegría hará que esta noche sea inolvidable.</p>
+        <h2 class="nombre-final">Ximena</h2>
+        <div class="flores-finales">✦ ◈ ✦</div>
+      </div>
+      <div class="floral-bottom"></div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
